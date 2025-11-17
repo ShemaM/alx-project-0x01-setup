@@ -1,5 +1,6 @@
-import PostCard from "@/components/common/PostCard";
+// pages/posts/index.tsx
 import Header from "@/components/layout/Header";
+import PostCard from "@/components/common/PostCard";
 import { PostProps } from "@/interfaces";
 
 interface PostsPageProps {
@@ -8,9 +9,9 @@ interface PostsPageProps {
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="p-4">
+      <main className="p-4 flex-grow">
         <div className="flex justify-between mb-4">
           <h1 className="text-2xl font-semibold">Post Content</h1>
           <button className="bg-blue-700 px-4 py-2 rounded-full text-white hover:bg-blue-800 transition">
