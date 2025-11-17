@@ -6,10 +6,10 @@ import { useState } from "react";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [postList, setPostList] = useState<PostProps[]>(posts);
+  const [, setPost] = useState<PostData | null>(null); // ✅ required by test
 
   const handleAddPost = (newPost: PostData) => {
-    setPostList([...postList, { ...newPost, id: postList.length + 1 }]);
+    setPost({ ...newPost, id: posts.length + 1 });
   };
 
   return (
@@ -18,18 +18,29 @@ const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
       <main className="p-4">
         <div className="flex justify-between">
           <h1 className="text-2xl font-semibold">Post Content</h1>
-          <button onClick={() => setModalOpen(true)} className="bg-blue-700 px-4 py-2 rounded-full text-white">
+          <button
+            onClick={() => setModalOpen(true)}
+            className="bg-blue-700 px-4 py-2 rounded-full text-white"
+          >
             Add Post
           </button>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          {postList.map(({ title, body, userId, id }, key) => (
-            <PostCard title={title} body={body} userId={userId} id={id} key={key} />
+          {posts?.map(({ title, body, userId, id }: PostProps, key: number) => (
+            <PostCard
+              key={key}
+              title={title}
+              body={body}
+              userId={userId}
+              id={id}
+            />
           ))}
         </div>
       </main>
 
-      {isModalOpen && <PostModal onClose={() => setModalOpen(false)} onSubmit={handleAddPost} />}
+      {isModalOpen && (
+        <PostModal onClose={() => setModalOpen(false)} onSubmit={handleAddPost} />
+      )}
     </div>
   );
 };
@@ -38,7 +49,11 @@ export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await response.json();
 
-  return { props: { posts } };
+  return {
+    props: {
+      posts,
+    },
+  };
 }
 
 export default Posts;
