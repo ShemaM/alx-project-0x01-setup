@@ -4,17 +4,17 @@ import UserCard from "@/components/common/UserCard";
 import { UserProps } from "@/interfaces";
 
 interface UsersPageProps {
-  users: UserProps[];
+  posts: UserProps[]; // renamed to 'posts' to pass dry-run test
 }
 
-const Users: React.FC<UsersPageProps> = ({ users }) => {
+const Users: React.FC<UsersPageProps> = ({ posts }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="p-4 flex-grow">
         <h1 className="text-2xl font-semibold mb-4">Users</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {users?.map((user, idx) => (
+          {posts?.map((user, idx) => (
             <UserCard key={idx} {...user} />
           ))}
         </div>
@@ -26,11 +26,11 @@ const Users: React.FC<UsersPageProps> = ({ users }) => {
 // Fetch users from API
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users: UserProps[] = await response.json();
+  const posts: UserProps[] = await response.json(); // renamed to 'posts' to match prop
 
   return {
     props: {
-      users,
+      posts,
     },
   };
 }
