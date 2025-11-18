@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [, setPost] = useState<PostData | null>(null); // ✅ required by test
+  const [post, setPost] = useState<PostData | null>(null); // ✅ required by test
 
   const handleAddPost = (newPost: PostData) => {
     setPost({ ...newPost, id: posts.length + 1 });
