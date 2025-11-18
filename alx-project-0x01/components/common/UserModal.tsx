@@ -30,27 +30,48 @@ const emptyUser: UserData = {
 export default function UserModal({ isOpen, onClose, onSubmit }: UserModalProps) {
   const [formData, setFormData] = useState<UserData>(emptyUser);
 
+  // Handles text inputs including nested paths like "address.city"
   const handleChange = (path: string, value: string) => {
-    // Clone safely without using "any"
-    const clone = JSON.parse(JSON.stringify(formData)) as UserData;
-
-    // Update nested values using dot-notation (address.city, company.name, etc.)
+    const updated = { ...formData };
     const keys = path.split(".");
-    let obj: unknown = clone;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let obj: any = updated;
 
     for (let i = 0; i < keys.length - 1; i++) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      obj = (obj as any)[keys[i]];
+      obj = obj[keys[i]];
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (obj as any)[keys[keys.length - 1]] = value;
+    obj[keys[keys.length - 1]] = value;
 
-    setFormData(clone);
+    setFormData(updated);
   };
 
   const handleSubmit = () => {
-    onSubmit(formData);
+    // The project requires submitting ONLY UserProps (small interface)
+    onSubmit({
+        id: formData.id,
+        name: formData.name,
+        username: formData.username,
+        email: formData.email,
+        address: {
+            street: "",
+            suite: "",
+            city: "",
+            zipcode: "",
+            geo: {
+                lat: "",
+                lng: ""
+            }
+        },
+        phone: "",
+        website: "",
+        company: {
+            name: "",
+            catchPhrase: "",
+            bs: ""
+        }
+    });
+
     setFormData(emptyUser);
     onClose();
   };
