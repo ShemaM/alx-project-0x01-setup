@@ -87,6 +87,7 @@ Tailwind CSS provides utility-first styling
 
 
 # Project Structure
+
 alx-project-0x01/
 ├── components/
 │   ├── common/          # Reusable components
