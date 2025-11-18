@@ -1,10 +1,11 @@
 # alx-project-0x01-setup
 
-Project Description
+# Project Description
+
 This project is a comprehensive Next.js web application that demonstrates fundamental concepts of modern web development. The application features multiple pages for displaying posts and users, with interactive components for adding new content. Built with TypeScript, Tailwind CSS, and Next.js, the project showcases best practices in component-based architecture, state management, and API integration.
 
-Learning Objectives
-By completing this project, you will:
+# Learning Objectives
+
 
 Set up a Next.js application with TypeScript and Tailwind CSS
 Implement dynamic page routing and navigation
@@ -15,15 +16,20 @@ Understand static site generation with getStaticProps
 Manage component state with React hooks
 Structure a project with proper directory organization
 Apply responsive design principles with Tailwind CSS
-Requirements
-Technical Requirements
+
+
+# Requirements
+
+# 1. Technical Requirements
 Node.js (v16 or later)
 npm or yarn
 Next.js (latest version)
 TypeScript
 Tailwind CSS
 ESLint (for code quality)
-Functional Requirements
+
+
+# 2. Functional Requirements
 Base Application Setup
 
 Create Next.js app with TypeScript, Tailwind CSS, and ESLint
@@ -78,7 +84,9 @@ Static generation (getStaticProps) is used for initial data fetching
 Modals demonstrate interactive UI patterns
 TypeScript interfaces ensure type safety throughout the application
 Tailwind CSS provides utility-first styling
-Project Structure
+
+
+# Project Structure
 alx-project-0x01/
 ├── components/
 │   ├── common/          # Reusable components
