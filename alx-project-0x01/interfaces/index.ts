@@ -69,7 +69,9 @@ export interface UserData {
 }
 
 export interface UserModalProps {
-  isOpen: boolean;
+
+  isOpen:boolean;
+
   onClose: () => void;
   onSubmit: (user: UserData) => void;
 }
