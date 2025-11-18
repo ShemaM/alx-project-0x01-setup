@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [post, setPost] = useState<PostData | null>(null); // ✅ required by test
 
   const handleAddPost = (newPost: PostData) => {
