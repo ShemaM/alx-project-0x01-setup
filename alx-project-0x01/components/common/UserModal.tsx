@@ -49,7 +49,7 @@ export default function UserModal({ isOpen, onClose, onSubmit }: UserModalProps)
   const handleSubmit = () => {
     // The project requires submitting ONLY UserProps (small interface)
     onSubmit({
-        id: formData.id,
+        id: formData.id ?? 0,
         name: formData.name,
         username: formData.username,
         email: formData.email,
