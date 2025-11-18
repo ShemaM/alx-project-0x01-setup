@@ -11,6 +11,7 @@ export interface PostModalProps {
 }
 
 
+
 export interface PostProps {
   userId: number;
   id: number;
@@ -65,6 +66,11 @@ export interface UserData {
     catchPhrase: string;
     bs: string;
   };
+}
+
+export interface UserModalProps {
+  onClose: () => void;
+  onSubmit: (user: UserData) => void;
 }
 
 export interface UserModalProps {
